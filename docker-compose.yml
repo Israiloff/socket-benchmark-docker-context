@@ -1,0 +1,27 @@
+name: mobile-app
+
+networks:
+  main-network:
+    driver: bridge
+
+services:
+  rest-api-server:
+    image: rest-api-server:latest
+    container_name: rest-api-server
+    build:
+      context: https://${GIT_USER_NAME}:${GIT_ACCESS_TOKEN}@github.com/Israiloff/socket-benchmark-rest-api-server.git
+      dockerfile: Dockerfile
+    expose:
+      - "8097"
+    networks:
+      - main-network
+  socket-io-server:
+    image: socket-io-server:latest
+    container_name: socket-io-server
+    build:
+      context: https://${GIT_USER_NAME}:${GIT_ACCESS_TOKEN}@github.com/Israiloff/socket-benchmark-socket-io-server.git
+      dockerfile: Dockerfile
+    expose:
+      - "8096"
+    networks:
+      - main-network
