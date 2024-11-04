@@ -25,3 +25,8 @@ services:
       - "8096"
     networks:
       - main-network
+  alpine:
+    image: israiloff/alpine-docker:latest
+    container_name: alpine
+    networks:
+      - main-network
